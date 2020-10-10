@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class MultiHashTable {
@@ -35,6 +36,7 @@ public class MultiHashTable {
         return random.nextInt(Integer.MAX_VALUE - 1) + 1;
     }
 
+    //Create the hash function
     private int[] generateHashFunction(int flowID) {
         int result[] = new int[s.length];
         for(int i = 0; i < result.length; i++) {
@@ -65,13 +67,21 @@ public class MultiHashTable {
                 }
             }
         }
-        System.out.println(Arrays.toString(hashTable));
         return totalCount;
     }
 
-    public static void main(String arg[]) {
+    public static void main(String arg[]) throws IOException {
         MultiHashTable mht = new MultiHashTable(1000,1000,3);
-        System.out.println(mht.fillHashTable());
+        File fout = new File("OutputMultiHashTable.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+        bw.write(Integer.toString(mht.fillHashTable()));
+        bw.newLine();
+        for (int i = 0; i < mht.hashTable.length; i++) {
+            bw.write(Integer.toString(mht.hashTable[i]));
+            bw.newLine();
+        }
+        bw.close();
     }
 
 
