@@ -5,33 +5,59 @@ In the project, I have implemented a multi-hashing table, Cuckoo hash table, and
 
 # For running the file:
 •	Extract the files from the folder.
+
+
 •	They consist of three java files and three output files denoted to each hash table.
+
+
 •	Run the files using the system having Java Run time environment setup. 
+
+
      javac MultiHashTable.java | CuckooHashTable.java | DLeftHashTable.java
+     
      java MultiHashTable | CuckooHashTable | DLeftHashTable
+     
 The output file will be generated.
 
-Implementation of Hash Tables
+# Implementation of Hash Tables
 
-1)	Multi-hashing table
+## 1)	Multi-hashing table
 
 Below are the input parameters for Demo: 
+
+
 number of table entries: 1000
+
+
 number of flows: 1000
+
+
 number of hashes: 3
+
+
 These input parameters are passed to the constructor.
 
 Below is the structure of the program:
-•	MultiHashTable(): The constructor of the program initializes the values of entries in the array, number of flows, and the number of hashes. Then it calls the generateHash method.
-•	generateHash(int[] s): This method is called by the constructor of the MultiHashTable and assigns unique values to the number of hash values needed in the program.
-•	random(): This method uses the random class in java. According to the functionality I have assigned to the method it generates a random number between 1 to maximum integer value supported in java.
-•	generateHashFunction(int flowID): This method create the XOR values obtained and assigns for each flowID.
-•	fillHashTable(): This method is called for filling the hash table. It counts the number of flowid’s that are filled in the hash table and generates a unique set of flowID for processing.
+
+### •	MultiHashTable(): 
+The constructor of the program initializes the values of entries in the array, number of flows, and the number of hashes. Then it calls the generateHash method.
+
+### •	generateHash(int[] s): 
+This method is called by the constructor of the MultiHashTable and assigns unique values to the number of hash values needed in the program.
+
+### •	random(): 
+This method uses the random class in java. According to the functionality I have assigned to the method it generates a random number between 1 to maximum integer value supported in java.
+
+### •	generateHashFunction(int flowID): 
+This method create the XOR values obtained and assigns for each flowID.
+
+### •	fillHashTable(): 
+This method is called for filling the hash table. It counts the number of flowid’s that are filled in the hash table and generates a unique set of flowID for processing.
 
 It generates the output file “OutputMultiHashTable.txt” for storing the data of the has table. As per the project requirement, the first line is the count of flow ID’s in the hash table and the rest of the lines consist of the unique flow ID’s residing in the table. 
 According to the output generated, the hash table filled using the Multi-hashing technique occupies around 820+ values in the hast table.
 
-2)	Cuckoo hash table
+## 2)	Cuckoo hash table
 
 Below are the input parameters for Demo: 
 number of table entries: 1000
