@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class DLeftHashTable {
@@ -68,13 +69,21 @@ public class DLeftHashTable {
                 }
             }
         }
-        System.out.println(Arrays.toString(hashTable));
         return totalCount;
     }
 
-    public static void main(String arg[]) {
+    public static void main(String arg[]) throws IOException {
         DLeftHashTable dht = new DLeftHashTable(1000,1000,4);
-        System.out.println(dht.fillHashTable());
+        File fout = new File("OutputDLeftHashTable.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+        bw.write(Integer.toString(dht.fillHashTable()));
+        bw.newLine();
+        for (int i = 0; i < dht.hashTable.length; i++) {
+            bw.write(Integer.toString(dht.hashTable[i]));
+            bw.newLine();
+        }
+        bw.close();
     }
 
 
