@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class CuckooHashTable {
@@ -45,7 +46,7 @@ public class CuckooHashTable {
     }
 
     //Fill in the Hash Table with Flow ID's
-    public int fillHashTable(){
+    public int fillHashTable(int numOfCuckooSteps){
         int totalCount = 0;
         Set<Integer> uniqueHashTable = new HashSet<>();
         for(int i = 0; i < numofFlows; i++) {
@@ -68,18 +69,46 @@ public class CuckooHashTable {
                     break;
                 }
             }
-
             if(!found) {
-
+                for(int j = 0; j < resultHash.length; j++) {
+                    if(move(resultHash[j], numOfCuckooSteps)) {
+                        hashTable[resultHash[j] % numOfEntries] = flowID;
+                        totalCount++;
+                        break;
+                    }
+                }
             }
         }
         System.out.println(Arrays.toString(hashTable));
         return totalCount;
     }
 
+    private boolean move(int newHashValue, int numOfCuckooSteps) {
+        if(numOfCuckooSteps == 0) {
+            return false;
+        } else{
+            int newFlowID = hashTable[newHashValue % numOfEntries];
+            int resultHash[] = parentMap.get(newFlowID);
+            for(int i = 0; i < resultHash.length; i++) {
+                if(resultHash[i] != newHashValue && hashTable[resultHash[i] % numOfEntries] == 0) {
+                    hashTable[resultHash[i] % numOfEntries] = newFlowID;
+                    return true;
+                }
+            }
+
+            for(int i = 0; i < resultHash.length; i++) {
+                if(resultHash[i] != newHashValue && move(resultHash[i], numOfCuckooSteps - 1)) {
+                    hashTable[resultHash[i] % numOfEntries] = newFlowID;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String arg[]) {
         CuckooHashTable cht = new CuckooHashTable(1000,1000,3);
-        System.out.println(cht.fillHashTable());
+        System.out.println(cht.fillHashTable(2));
     }
 
 
