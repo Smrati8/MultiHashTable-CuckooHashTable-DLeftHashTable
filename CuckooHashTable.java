@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+import java.io.*;
 import java.util.*;
 
 public class CuckooHashTable {
@@ -79,10 +79,10 @@ public class CuckooHashTable {
                 }
             }
         }
-        System.out.println(Arrays.toString(hashTable));
         return totalCount;
     }
 
+    //this function moves recursively back the cuckoo steps
     private boolean move(int newHashValue, int numOfCuckooSteps) {
         if(numOfCuckooSteps == 0) {
             return false;
@@ -106,9 +106,18 @@ public class CuckooHashTable {
         return false;
     }
 
-    public static void main(String arg[]) {
+    public static void main(String arg[]) throws IOException {
         CuckooHashTable cht = new CuckooHashTable(1000,1000,3);
-        System.out.println(cht.fillHashTable(2));
+        File fout = new File("OutputCuckooHashTable.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+        bw.write(Integer.toString(cht.fillHashTable(2)));
+        bw.newLine();
+        for (int i = 0; i < cht.hashTable.length; i++) {
+            bw.write(Integer.toString(cht.hashTable[i]));
+            bw.newLine();
+        }
+        bw.close();
     }
 
 
