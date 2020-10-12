@@ -108,10 +108,19 @@ public class CuckooHashTable {
 
     public static void main(String arg[]) throws IOException {
         CuckooHashTable cht = new CuckooHashTable(1000,1000,3);
+        int numOfCuckooSteps = 2;
+        if(arg.length == 4) {
+            try {
+                cht = new CuckooHashTable(Integer.parseInt(arg[0]),Integer.parseInt(arg[1]),Integer.parseInt(arg[2]));
+                numOfCuckooSteps = Integer.parseInt(arg[3]);
+            } catch(NumberFormatException nfe) {
+                System.out.println("Please provide a valid Input");
+            }
+        }
         File fout = new File("OutputCuckooHashTable.txt");
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-        bw.write(Integer.toString(cht.fillHashTable(2)));
+        bw.write(Integer.toString(cht.fillHashTable(numOfCuckooSteps)));
         bw.newLine();
         for (int i = 0; i < cht.hashTable.length; i++) {
             bw.write(Integer.toString(cht.hashTable[i]));
