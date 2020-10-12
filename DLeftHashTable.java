@@ -74,6 +74,13 @@ public class DLeftHashTable {
 
     public static void main(String arg[]) throws IOException {
         DLeftHashTable dht = new DLeftHashTable(1000,1000,4);
+        if(arg.length == 3) {
+            try {
+                dht = new DLeftHashTable(Integer.parseInt(arg[0]),Integer.parseInt(arg[1]),Integer.parseInt(arg[2]));
+            } catch(NumberFormatException nfe) {
+                System.out.println("Please provide a valid Input");
+            }
+        }
         File fout = new File("OutputDLeftHashTable.txt");
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
