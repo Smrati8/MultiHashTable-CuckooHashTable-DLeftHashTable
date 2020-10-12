@@ -72,6 +72,14 @@ public class MultiHashTable {
 
     public static void main(String arg[]) throws IOException {
         MultiHashTable mht = new MultiHashTable(1000,1000,3);
+        if(arg.length == 3) {
+            try {
+                mht = new MultiHashTable(Integer.parseInt(arg[0]),Integer.parseInt(arg[1]),Integer.parseInt(arg[2]));
+            } catch(NumberFormatException nfe) {
+                System.out.println("Please provide a valid Input");
+            }
+        }
+
         File fout = new File("OutputMultiHashTable.txt");
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
