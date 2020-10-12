@@ -15,8 +15,9 @@ In the project, I have implemented a multi-hashing table, Cuckoo hash table, and
 
      javac MultiHashTable.java | CuckooHashTable.java | DLeftHashTable.java
      
-     java MultiHashTable | CuckooHashTable | DLeftHashTable
+     (java MultiHashTable 1000 1000 3) | (java CuckooHashTable 1000 1000 3 2) | (java DLeftHashTable 1000 1000 4)
      
+Please pass the dynamic parameters otherwise default parameters will run.
 The output file will be generated.
 
 # Implementation of Hash Tables
