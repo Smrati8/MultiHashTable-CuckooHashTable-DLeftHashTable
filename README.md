@@ -3,6 +3,30 @@
 # Description
 In the project, I have implemented a multi-hashing table, Cuckoo hash table, and d-left hash table.
 
+## Multi-hashing table
+
+**Input**: number of table entries, number of flows, number of hashes – for demo, they are 1000, 1000 and 3, respectively
+
+**Function**: generate flow IDs randomly, assume each flow has one packet, record one flow at a time into the hash table, and ignore the flows that cannot be placed into the hash table.  
+
+**Output**: number of flows in the hash table, and the list of table entries (print out the flow ID if an entry has a flow or zero otherwise)  
+
+## Cuckoo hash table
+
+**Input**: number of table entries, number of flows, number of hashes, number of Cuckoo steps – for demo, they are 1000, 1000, 3, and 2, respectively
+
+**Function**: generate flow IDs randomly, assume each flow has one packet, record one flow at a time into the hash table, and ignore the flows that cannot be placed into the hash table.  
+
+**Output**: number of flows in the hash table, and the list of table entries (print out the flow ID if an entry has a flow or zero otherwise)  
+
+## d-left hash table
+
+**Input**: total number of table entries, number of flows, number of segments (hashes) – for demo, they are 1000, 1000, and 4 respectively; each segment has 250 table entries.
+
+**Function**: generate flow IDs randomly, assume each flow has one packet, record one flow at a time into the hash table, and ignore the flows that cannot be placed into the hash table.  
+
+**Output**: number of flows in the hash table, and the list of table entries (print out the flow ID if an entry has a flow or zero otherwise)  
+
 # For running the file:
 •	Extract the files from the folder.
 
