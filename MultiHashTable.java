@@ -23,6 +23,7 @@ public class MultiHashTable {
             while(true) {
                 int newHash = random();
                 if(!uniqueHash.contains(newHash)) {
+                    uniqueHash.add(newHash);
                     s[i] = newHash;
                     break;
                 }
@@ -38,7 +39,7 @@ public class MultiHashTable {
 
     //Create the hash function
     private int[] generateHashFunction(int flowID) {
-        int result[] = new int[s.length];
+        int[] result = new int[s.length];
         for(int i = 0; i < result.length; i++) {
             result[i] = flowID ^ s[i];
         }
@@ -55,10 +56,11 @@ public class MultiHashTable {
             while(true) {
                 flowID = random();
                 if(!uniqueHashTable.contains(flowID)) {
+                    uniqueHashTable.add(flowID);
                     break;
                 }
             }
-            int resultHash[] = generateHashFunction(flowID);
+            int[] resultHash = generateHashFunction(flowID);
             for(int j = 0; j < resultHash.length; j++) {
                 if(hashTable[resultHash[j] % numOfEntries] == 0) {
                     hashTable[resultHash[j] % numOfEntries] = flowID;
@@ -70,7 +72,7 @@ public class MultiHashTable {
         return totalCount;
     }
 
-    public static void main(String arg[]) throws IOException {
+    public static void main(String[] arg) throws IOException {
         MultiHashTable mht = new MultiHashTable(1000,1000,3);
         if(arg.length == 3) {
             try {
@@ -91,6 +93,4 @@ public class MultiHashTable {
         }
         bw.close();
     }
-
-
 }
