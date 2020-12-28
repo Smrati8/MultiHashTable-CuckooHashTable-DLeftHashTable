@@ -1,4 +1,4 @@
-# MultiHashTable-CuckooHashTable-DLeftHashTable
+# MultiHashTable CuckooHashTable DLeftHashTable
 
 # Description
 In the project, I have implemented a multi-hashing table, Cuckoo hash table, and d-left hash table.
